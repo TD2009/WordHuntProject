@@ -5,6 +5,7 @@ import cv2
 
 img_path = "rawExample.jpeg"
 save_path = ""
+
 alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 def cropBoard(image_path, x, y, crop_size=820):
