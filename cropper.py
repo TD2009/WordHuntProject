@@ -3,6 +3,8 @@ import os
 import numpy as np
 import cv2
 
+img_path = "rawExample.jpeg"
+save_path = ""
 alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
 def cropBoard(image_path, x, y, crop_size=820):
@@ -49,21 +51,21 @@ def predict(image, templates):
 
 
 
-img = cropBoard("/Users/tanishdasari/downloads/IMG_1470.jpeg", x=175, y=1131)
+img = cropBoard(img_path, x=175, y=1131)
 npArray = np.array(img)
 
 img.show()
-img.save("/Users/tanishdasari/croppedBoard.png")
+img.save(save_path)
 
 board = [[0 for _ in range(4)] for _ in range(4)]
-templates = load_templates("/Users/tanishdasari/WordHuntProject")
+templates = load_templates("letters")
 
 for x in range (4): 
     for y in range (4): 
         board[x][y] = predict(getLetter(img, x, y), templates)
 
 
-with open("/Users/tanishdasari/currentBoard.txt", "w") as f:
+with open("/croppedBoard.png", "w") as f:
     for x in range(4):
         for y in range(4):
             f.write(board[y][x] + " ")
