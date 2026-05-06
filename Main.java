@@ -26,7 +26,7 @@ public class Main {
     static TreeSet<Word> ans = new TreeSet<>();
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        String boardFile = "/Users/tanishdasari/currentBoard.txt";
+        String boardFile = "currentBoard.txt";
 
         BufferedReader br = new BufferedReader(new FileReader(boardFile));
         for (int i = 0; i < 4; i++) {
@@ -37,7 +37,7 @@ public class Main {
         }
         br.close();
 
-        String file = "/Users/tanishdasari/wordset_hash.ser";
+        String file = "wordset_hash.ser";
 
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 
@@ -62,7 +62,7 @@ public class Main {
         }
 
         for (int word = 0; word < ans.size(); word++) {
-            BufferedImage image = ImageIO.read(new File("/Users/tanishdasari/croppedBoard.png"));
+            BufferedImage image = ImageIO.read(new File("croppedBoard.png"));
             Graphics2D g2d = image.createGraphics();
             g2d.setColor(Color.RED);
             g2d.setStroke(new BasicStroke(3));
@@ -79,7 +79,7 @@ public class Main {
             int radius = 20;
             g2d.drawOval(start.x - radius, start.y - radius, radius * 2, radius * 2);
 
-            ImageIO.write(image, "png", new File("/Users/tanishdasari/Words/Word" + (word) + ".png"));
+            ImageIO.write(image, "png", new File("Words/Word" + (word) + ".png"));
             g2d.dispose();
 
 
@@ -87,7 +87,7 @@ public class Main {
         }
 
         JFrame frame = new JFrame();
-        JLabel label = new JLabel(new ImageIcon("/Users/tanishdasari/Words/Word0.png"));
+        JLabel label = new JLabel(new ImageIcon("Words/Word0.png"));
         frame.add(label);
         frame.pack();
         frame.setVisible(true);
@@ -99,7 +99,7 @@ public class Main {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     index[0]++;
-                    File nextFile = new File("/Users/tanishdasari/Words/Word" + index[0] + ".png");
+                    File nextFile = new File("Words/Word" + index[0] + ".png");
                     if (nextFile.exists()) {
                         label.setIcon(new ImageIcon(nextFile.getAbsolutePath()));
                         frame.pack();
@@ -113,7 +113,7 @@ public class Main {
 
 
         //ImageIO.write(image, "png", new File("/Users/tanishdasari/Words" + ((int) (Math.random() * 100)) + ".png"));
-        ImageIO.read(new File("/Users/tanishdasari/markedBoard.png")).getScaledInstance(820, 820, BufferedImage.SCALE_SMOOTH); 
+        ImageIO.read(new File("markedBoard.png")).getScaledInstance(820, 820, BufferedImage.SCALE_SMOOTH); 
     }
 
     public static Point getPointForLetter(int x, int y) {
